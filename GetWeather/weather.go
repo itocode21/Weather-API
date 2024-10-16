@@ -7,14 +7,14 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	custommodels "weather-api/Custommodels"
+	custommodels "weather-api/CustomModels"
 )
 
 const weatherApiUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
 
 // --------------------------------------------------------------------------+
 func GetWeather(location string) (*custommodels.WeatherResponse, error) {
-	ApiKey := os.Getenv("U_WEATHER_API_KEY")
+	ApiKey := os.Getenv("L7HQKECZJJ4TN3FC6TKXA3KZD")
 	ApiUrl := fmt.Sprintf("%s/%s?key=%s", weatherApiUrl, location, ApiKey)
 	log.Printf("Fetch weather for %s/n", location)
 

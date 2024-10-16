@@ -18,7 +18,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-func UpEnv() {
+func LoadEnv() {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatalf("Error loading .env file")
@@ -26,8 +26,8 @@ func UpEnv() {
 }
 
 func main() {
-	UpEnv()
-	reidsAddr := os.Getenv("redis addr")
+	LoadEnv()
+	reidsAddr := os.Getenv("redis-10426.c302.asia-northeast1-1.gce.redns.redis-cloud.com:10426")
 	ctx := context.Background()
 
 	router := chi.NewRouter()
