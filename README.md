@@ -10,12 +10,12 @@ This is my project following[ https://roadmap.sh/projects/weather-api-wrapper-se
 - Install Redis
 
 # How to use it?
-1  Clone my project on your machine 
+1  Clone project on your machine 
 ```
   git clone https://github.com/itocode21/Weather-Api.git
 ```
 
-2  After that, run the Docker file to pull Redis .If you already have Redis on your local machine , you don't need do this step   
+2  Run the Docker file to pull Redis .If you already have Redis on your local machine , you don't need do this step   
 - Build and compose up Docker
 ```
 docker compose -f "docker-compose.yml" up -d --build
