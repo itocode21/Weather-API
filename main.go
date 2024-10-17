@@ -18,16 +18,19 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// -----------------------------------------------+
 func LoadEnv() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatalf("Error loading .env file")
+		log.Fatalf("Error loading .env file") //|
 	}
 }
 
+// -----------------------------------------------+
+
 func main() {
 	LoadEnv()
-	reidsAddr := os.Getenv("redis-10426.c302.asia-northeast1-1.gce.redns.redis-cloud.com:10426")
+	reidsAddr := os.Getenv("REDIS_ADDR")
 	ctx := context.Background()
 
 	router := chi.NewRouter()
@@ -36,7 +39,6 @@ func main() {
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
 
-	//-------------------------------------------------------
 	router.Get("/weather/{location}", func(w http.ResponseWriter, r *http.Request) {
 		location := chi.URLParam(r, "location")
 		cacheKey := strings.ToLower(location)

@@ -14,7 +14,7 @@ const weatherApiUrl = "https://weather.visualcrossing.com/VisualCrossingWebServi
 
 // --------------------------------------------------------------------------+
 func GetWeather(location string) (*custommodels.WeatherResponse, error) {
-	ApiKey := os.Getenv("L7HQKECZJJ4TN3FC6TKXA3KZD")
+	ApiKey := os.Getenv("WEATHER_API_KEY")
 	ApiUrl := fmt.Sprintf("%s/%s?key=%s", weatherApiUrl, location, ApiKey)
 	log.Printf("Fetch weather for %s/n", location)
 
@@ -31,19 +31,16 @@ func GetWeather(location string) (*custommodels.WeatherResponse, error) {
 	ApiUrlBuilder.RawQuery = parameter.Encode() //|
 	//--------------------------------------------+-------------+
 
-	Response, err := http.Get(ApiUrlBuilder.String()) //|
+	Response, err := http.Get(ApiUrlBuilder.String())
 	if err != nil {
 		return nil, fmt.Errorf("error in #block [3] | Create get req\n%v", err)
 	}
-	defer Response.Body.Close()
 
-	//---------------------------------------------------------------------------+
+	defer Response.Body.Close()
 
 	if Response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error in block [4] | unexpected status code\n%v", err)
 	}
-
-	//---------------------------------------------------------------------------+
 
 	var ApiResponse custommodels.WeatherResponse
 	if err := json.NewDecoder(Response.Body).Decode(&ApiResponse); err != nil {
@@ -53,3 +50,5 @@ func GetWeather(location string) (*custommodels.WeatherResponse, error) {
 	log.Printf("Code: '200'\n fetched weather")
 	return &ApiResponse, nil
 }
+
+//---------------------------------------------------------------------------+
