@@ -32,7 +32,7 @@ go run main.go
 
 # Usage
 Send a GET request to the following endpoint:
-```http
+```
 http://localhost:3000/weather/your_location 
 Example:
 http://localhost:3000/weather/tokyo
