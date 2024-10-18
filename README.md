@@ -35,5 +35,5 @@ Send a GET request to the following endpoint:
 ```
 http://localhost:3000/weather/your_location 
 Example:
-http://localhost:3000/weather/tokyo
+http://localhost:3000/weather/Tokyo
 ```
